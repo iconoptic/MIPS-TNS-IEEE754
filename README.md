@@ -1,47 +1,39 @@
-# MIPS-TNS-IEEE754: Floating-Point Format Decoder
+# MIPS Floating Point Decoder — IEEE 754 vs. TNS Format
 
-This educational project is a **MIPS assembly program** designed to **parse and interpret 32-bit floating-point numbers** encoded in either:
-- **IEEE 754 format** (the industry standard for floating-point math), or
-- **TNS format** (Two's Complement Notation System, non-standard for floats but useful for contrast).
+This MIPS assembly program accepts a **32-bit hex-encoded number** and decodes it based on the user’s choice of encoding: the **standard IEEE 754 floating-point format**, or a custom **TNS (Two's Complement Notation System)** format. It prints the **sign**, **mantissa**, **exponent**, and **approximate decimal value** of the float.
 
-## Features
+> Project by Brendan Grant, April 2021, for CS 2400.
 
-- Accepts 32-bit **hexadecimal input** via console.
-- Extracts and prints:
-  - **Sign bit**
-  - **Exponent field** and actual exponent
-  - **Mantissa (fraction)** field
-- Displays a human-readable interpretation:
-  - Format type (IEEE 754 or TNS)
-  - Decimal approximation of the original binary float
+---
 
-## How It Works
+## What It Does
 
-- Uses **bitwise masking and shifting** to isolate sign, exponent, and mantissa bits.
-- **Reconstructs fractional values** using custom routines that simulate floating-point multiplication.
-- Determines which format to apply based on value characteristics.
-- **Handles edge cases** like zero, NaN, and infinity (for IEEE 754).
+- Asks the user to choose between **IEEE 754** or **TNS**.
+- Loads a hardcoded 32-bit word from `.data` (editable).
+- Decodes the **sign**, **exponent**, and **mantissa**.
+- Reconstructs and prints the **decimal equivalent** using floating-point arithmetic.
+- Uses **bitmasking**, **logical shifts**, and **custom float math** routines.
 
-## Requirements
+---
 
-- MIPS simulator (e.g., MARS or QtSPIM)
-- Ability to input hexadecimal values via syscall prompt
+## Format Logic
 
-## Educational Value
+### IEEE 754:
+- Sign: 1 bit
+- Exponent: 8 bits (biased by 127)
+- Mantissa: 23 bits
 
-This program demonstrates:
-- Mastery of **low-level binary math**
-- Understanding of **floating-point representation**
-- Skills in **manual bitfield parsing and binary-decimal conversion**
-- Comparison between **standardized and custom encoding schemes**
+### TNS Format:
+- Sign: 1 bit
+- Exponent: 9 bits (biased by 256)
+- Mantissa: 22 bits (left-shifted to match IEEE style)
 
-Ideal for students learning:
-- Computer organization
-- Digital logic
-- Assembly programming
-- Floating-point standards
+---
 
-## License
+## Key Sections
 
-MIT License
-
+```asm
+main            # Prompts user and branches to IEEE or TNS decoder
+findMant        # Converts mantissa into float via bit-by-bit summation
+expCalc         # Applies exponent (positive or negative) to scale mantissa
+printResult     # Displays mantissa, exponent, sign, and final decimal
