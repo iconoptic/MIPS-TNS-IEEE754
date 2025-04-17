@@ -37,3 +37,20 @@ main            # Prompts user and branches to IEEE or TNS decoder
 findMant        # Converts mantissa into float via bit-by-bit summation
 expCalc         # Applies exponent (positive or negative) to scale mantissa
 printResult     # Displays mantissa, exponent, sign, and final decimal
+
+**
+```
+
+### Technical Highlights
+- Uses l.s, mul.s, div.s for floating-point operations.
+- Reconstructs fractions using 1/(2^n) summation based on mantissa bits.
+- Applies sign via float multiplication ($f0 * $f3).
+- Results printed using syscalls for both strings and floats.
+
+### Example Input
+- You can modify the .word under hex: in .data to test different values:
+```
+hex: .word 0x41640000    # 14.25 IEEE
+     .word 0x64000103    # 14.25 TNS
+     .word 0x3b5844d0    # ~0.0033 IEEE
+     .word 0xde86010e    # -28483 TNS
