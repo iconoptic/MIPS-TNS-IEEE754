@@ -4,7 +4,7 @@ This educational project is a **MIPS assembly program** designed to **parse and 
 - **IEEE 754 format** (the industry standard for floating-point math), or
 - **TNS format** (Two's Complement Notation System, non-standard for floats but useful for contrast).
 
-## 🧠 Features
+## Features
 
 - Accepts 32-bit **hexadecimal input** via console.
 - Extracts and prints:
@@ -15,19 +15,19 @@ This educational project is a **MIPS assembly program** designed to **parse and 
   - Format type (IEEE 754 or TNS)
   - Decimal approximation of the original binary float
 
-## ⚙ How It Works
+## How It Works
 
 - Uses **bitwise masking and shifting** to isolate sign, exponent, and mantissa bits.
 - **Reconstructs fractional values** using custom routines that simulate floating-point multiplication.
 - Determines which format to apply based on value characteristics.
 - **Handles edge cases** like zero, NaN, and infinity (for IEEE 754).
 
-## 📌 Requirements
+## Requirements
 
 - MIPS simulator (e.g., MARS or QtSPIM)
 - Ability to input hexadecimal values via syscall prompt
 
-## 🎓 Educational Value
+## Educational Value
 
 This program demonstrates:
 - Mastery of **low-level binary math**
@@ -41,7 +41,7 @@ Ideal for students learning:
 - Assembly programming
 - Floating-point standards
 
-## 📎 License
+## License
 
 MIT License
 
