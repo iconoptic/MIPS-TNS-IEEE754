@@ -54,3 +54,22 @@ hex: .word 0x41640000    # 14.25 IEEE
      .word 0x64000103    # 14.25 TNS
      .word 0x3b5844d0    # ~0.0033 IEEE
      .word 0xde86010e    # -28483 TNS
+```
+
+### How to Run
+- Use MARS or QtSPIM.
+- Assemble and run.
+- Input 1 for IEEE or 0 for TNS at the prompt.
+- View breakdown and decimal output.
+
+### License
+MIT License — you may freely use and adapt this educational work.
+
+### Educational Value
+#### Great for exploring:
+- Binary encoding of floats
+- IEEE 754 standards
+- Custom floating point schemes
+- Bitmasking and low-level math
+- Float emulation in assembly
+
